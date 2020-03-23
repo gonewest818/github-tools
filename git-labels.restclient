@@ -1,0 +1,258 @@
+# -*- restclient -*-
+#
+# Use Github API to perform repetitive repo maintenance tasks
+
+:github = https://api.github.com
+:token := (auth-source-pick-first-password :host "api.github.com" :user "gonewest818^forge")
+:headers = <<
+Accept: application/vnd.github.v3+json
+User-Agent: Emacs/27.0.90 (MacOS 10.15.3) gonewest818
+Authorization: token :token
+#
+
+################################################################################
+# Usage:
+#   1. update owner and repo below
+#   2. jump to next query [C-x C-n]
+#   3. run query [C-c C-v]
+################################################################################
+
+:owner = emacsorphanage
+:repo = smeargle
+
+################################################################################
+# MANAGE LABELS
+
+# list existing labels
+GET :github/repos/:owner/:repo/labels
+:headers
+
+################################################################################
+# update "bug" label
+PATCH :github/repos/:owner/:repo/labels/bug
+:headers
+{
+  "new_name": "bug",
+  "description": "a feature isn't working",
+  "color": "cc1100"
+}
+
+# create "bug" label
+POST :github/repos/:owner/:repo/labels
+:headers
+{
+  "name": "bug",
+  "description": "a feature isn't working",
+  "color": "cc1100"
+}
+
+################################################################################
+# update "configuration" label
+PATCH :github/repos/:owner/:repo/labels/configuration
+:headers
+{
+  "new_name": "configuration",
+  "description": "need to improve configuration",
+  "color": "993388"
+}
+
+# create "configuration" label
+POST :github/repos/:owner/:repo/labels
+:headers
+{
+  "name": "configuration",
+  "description": "need to improve configuration",
+  "color": "993388"
+}
+
+################################################################################
+# update "documentation" label
+PATCH :github/repos/:owner/:repo/labels/documentation
+:headers
+{
+  "new_name": "documentation",
+  "description": "add or update documentation",
+  "color": "cc9955"
+}
+
+# create "documentation" label
+POST :github/repos/:owner/:repo/labels
+:headers
+{
+  "name": "documentation",
+  "description": "add or update documentation",
+  "color": "cc9955"
+}
+
+################################################################################
+# update "duplicate" label
+PATCH :github/repos/:owner/:repo/labels/duplicate
+:headers
+{
+  "new_name": "duplicate",
+  "description": "issue already reported",
+  "color": "cccccc"
+}
+
+# create "duplicate" label
+POST :github/repos/:owner/:repo/labels
+:headers
+{
+  "name": "duplicate",
+  "description": "issue already reported",
+  "color": "cccccc"
+}
+
+################################################################################
+# update "enhancement" label
+PATCH :github/repos/:owner/:repo/labels/enhancement
+:headers
+{
+  "new_name": "enhancement",
+  "description": "new feature requested",
+  "color": "84b6eb"
+}
+
+# create "enhancement" label
+POST :github/repos/:owner/:repo/labels
+:headers
+{
+  "name": "enhancement",
+  "description": "new feature requested",
+  "color": "84b6eb"
+}
+
+################################################################################
+# update "good first issue" label
+PATCH :github/repos/:owner/:repo/labels/good%20first%20issue
+:headers
+{
+  "new_name": "good first issue",
+  "description": "",
+  "color": "f775ee"
+}
+
+# create "good first issue" label
+POST :github/repos/:owner/:repo/labels
+:headers
+{
+  "name": "good first issue",
+  "description": "",
+  "color": "f775ee"
+}
+
+################################################################################
+# update "help wanted" label
+PATCH :github/repos/:owner/:repo/labels/help%20wanted
+:headers
+{
+  "new_name": "help wanted",
+  "description": "pull requests are welcome!",
+  "color": "33aa3f"
+}
+
+# create "help wanted" label
+POST :github/repos/:owner/:repo/labels
+:headers
+{
+  "name": "help wanted",
+  "description": "pull requests are welcome!",
+  "color": "33aa3f"
+}
+
+################################################################################
+# update "maintenance" label
+PATCH :github/repos/:owner/:repo/labels/maintenance
+:headers
+{
+  "new_name": "maintenance",
+  "description": "code cleanup, test cases, and versioning",
+  "color": "02526b"
+}
+
+# create "maintenance" label
+POST :github/repos/:owner/:repo/labels
+:headers
+{
+  "name": "maintenance",
+  "description": "code cleanup, test cases, and versioning",
+  "color": "02526b"
+}
+
+################################################################################
+# update "need repro" label
+PATCH :github/repos/:owner/:repo/labels/need%20repro
+:headers
+{
+  "new_name": "need repro",
+  "description": "we can't reproduce this",
+  "color": "f4be61"
+}
+
+# create "need repro" label
+POST :github/repos/:owner/:repo/labels
+:headers
+{
+  "name": "need repro",
+  "description": "we can't reproduce this",
+  "color": "f4be61"
+}
+
+################################################################################
+# update "not a bug" label
+PATCH :github/repos/:owner/:repo/labels/not%20a%20bug
+:headers
+{
+  "new_name": "not a bug",
+  "description": "this isn't really a bug",
+  "color": "fe8480"
+}
+
+# create "not a bug" label
+POST :github/repos/:owner/:repo/labels
+:headers
+{
+  "name": "not a bug",
+  "description": "this isn't really a bug",
+  "color": "fe8480"
+}
+
+################################################################################
+# update "question" label
+PATCH :github/repos/:owner/:repo/labels/question
+:headers
+{
+  "new_name": "question",
+  "description": "general questions",
+  "color": "8844cc"
+}
+
+# create "question" label
+POST :github/repos/:owner/:repo/labels
+:headers
+{
+  "name": "question",
+  "description": "general questions",
+  "color": "8844cc"
+}
+
+################################################################################
+# update "wontfix" label
+PATCH :github/repos/:owner/:repo/labels/wontfix
+:headers
+{
+  "new_name": "wontfix",
+  "description": "",
+  "color": "888888"
+}
+
+# create "wontfix" label
+POST :github/repos/:owner/:repo/labels
+:headers
+{
+  "name": "wontfix",
+  "description": "",
+  "color": "888888"
+}
+
+################################################################################
